@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct NumbersApp: App {
+    let store = Store(initialState: RootDomain.RootDomainReducer.State()) {
+        RootDomain.RootDomainReducer()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView(store: store)
         }
     }
 }
